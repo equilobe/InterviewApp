@@ -190,6 +190,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\Admin.css" />
+    <Content Include="Content\css\readme.txt" />
     <Content Include="Content\css\Respondent.css" />
     <Content Include="Content\less\_Editor.less" />
     <Content Include="ConnectionStrings.config" />
