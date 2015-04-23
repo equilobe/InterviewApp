@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TestDeliveryModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="TestDeliveryModelStoreContainer">
+    <EntitySet Name="Respondent" EntityType="TestDeliveryModel.Store.Respondent" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Test" EntityType="TestDeliveryModel.Store.Test" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TestTemplate" EntityType="TestDeliveryModel.Store.TestTemplate" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_RespondentTest_Test" Association="TestDeliveryModel.Store.FK_RespondentTest_Test">
+      <End Role="Respondent" EntitySet="Respondent" />
+      <End Role="Test" EntitySet="Test" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Test_TestTemplate" Association="TestDeliveryModel.Store.FK_Test_TestTemplate">
+      <End Role="TestTemplate" EntitySet="TestTemplate" />
+      <End Role="Test" EntitySet="Test" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Respondent">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="500" />
+    <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="500" />
+    <Property Name="PhoneNumber" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Url" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Notes" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="SecretCode" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Test">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="RespondentId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TestId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="SecretCode" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="DateEmailSend" Type="datetime" Nullable="true" />
+    <Property Name="DateStarted" Type="datetime" Nullable="true" />
+    <Property Name="DateCompleted" Type="datetime" Nullable="true" />
+    <Property Name="DateEvaluated" Type="datetime" Nullable="true" />
+    <Property Name="AnswersXML" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ScorePercent" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TestTemplate">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="StartInstructions" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="QuestionsXML" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="TimeLimit" Type="int" Nullable="false" />
+    <Property Name="IsQuestionTimeLimitEnforced" Type="bit" Nullable="false" />
+    <Property Name="IsRandomOrder" Type="bit" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="Priority" Type="int" Nullable="false" />
+    <Property Name="EndInstructions" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <Association Name="FK_RespondentTest_Test">
+    <End Role="Respondent" Type="TestDeliveryModel.Store.Respondent" Multiplicity="1" />
+    <End Role="Test" Type="TestDeliveryModel.Store.Test" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Respondent">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Test">
+        <PropertyRef Name="RespondentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Test_TestTemplate">
+    <End Role="TestTemplate" Type="TestDeliveryModel.Store.TestTemplate" Multiplicity="1" />
+    <End Role="Test" Type="TestDeliveryModel.Store.Test" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TestTemplate">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Test">
+        <PropertyRef Name="TestId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TestDeliveryModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="TestDeliveryEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Respondent" EntityType="TestDeliveryModel.Respondent" />
+          <EntitySet Name="Test" EntityType="TestDeliveryModel.Test" />
+          <AssociationSet Name="FK_RespondentTest_Test" Association="TestDeliveryModel.FK_RespondentTest_Test">
+            <End Role="Respondent" EntitySet="Respondent" />
+            <End Role="Test" EntitySet="Test" />
+          </AssociationSet>
+          <EntitySet Name="TestTemplate" EntityType="TestDeliveryModel.TestTemplate" />
+          <AssociationSet Name="FK_Test_TestTemplate" Association="TestDeliveryModel.FK_Test_TestTemplate">
+            <End Role="TestTemplate" EntitySet="TestTemplate" />
+            <End Role="Test" EntitySet="Test" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Respondent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Tests" Relationship="TestDeliveryModel.FK_RespondentTest_Test" FromRole="Respondent" ToRole="Test" />
+          <Property Type="String" Name="PhoneNumber" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Url" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Notes" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SecretCode" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Test">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="RespondentId" Type="Guid" Nullable="false" />
+          <Property Name="TestId" Type="Guid" Nullable="false" />
+          <Property Name="SecretCode" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="DateEmailSend" Type="DateTime" Precision="3" />
+          <Property Name="DateStarted" Type="DateTime" Precision="3" />
+          <Property Name="DateCompleted" Type="DateTime" Precision="3" />
+          <Property Name="DateEvaluated" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Respondent" Relationship="TestDeliveryModel.FK_RespondentTest_Test" FromRole="Test" ToRole="Respondent" />
+          <Property Type="String" Name="AnswersXML" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="TestTemplate" Relationship="TestDeliveryModel.FK_Test_TestTemplate" FromRole="Test" ToRole="TestTemplate" />
+          <Property Type="Int32" Name="ScorePercent" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_RespondentTest_Test">
+          <End Role="Respondent" Type="TestDeliveryModel.Respondent" Multiplicity="1" />
+          <End Role="Test" Type="TestDeliveryModel.Test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Respondent">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Test">
+              <PropertyRef Name="RespondentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TestTemplate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="StartInstructions" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="QuestionsXML" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="TimeLimit" Nullable="false" />
+          <Property Type="Boolean" Name="IsQuestionTimeLimitEnforced" Nullable="false" />
+          <Property Type="Boolean" Name="IsRandomOrder" Nullable="false" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="Int32" Name="Priority" Nullable="false" />
+          <Property Type="String" Name="EndInstructions" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tests" Relationship="TestDeliveryModel.FK_Test_TestTemplate" FromRole="TestTemplate" ToRole="Test" />
+        </EntityType>
+        <Association Name="FK_Test_TestTemplate">
+          <End Type="TestDeliveryModel.TestTemplate" Role="TestTemplate" Multiplicity="1" />
+          <End Type="TestDeliveryModel.Test" Role="Test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestTemplate">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Test">
+              <PropertyRef Name="TestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TestDeliveryModelStoreContainer" CdmEntityContainer="TestDeliveryEntities">
+    <EntitySetMapping Name="Respondent">
+      <EntityTypeMapping TypeName="IsTypeOf(TestDeliveryModel.Respondent)">
+        <MappingFragment StoreEntitySet="Respondent">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="SecretCode" ColumnName="SecretCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Test">
+      <EntityTypeMapping TypeName="IsTypeOf(TestDeliveryModel.Test)">
+        <MappingFragment StoreEntitySet="Test">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RespondentId" ColumnName="RespondentId" />
+          <ScalarProperty Name="TestId" ColumnName="TestId" />
+          <ScalarProperty Name="SecretCode" ColumnName="SecretCode" />
+          <ScalarProperty Name="DateEmailSend" ColumnName="DateEmailSend" />
+          <ScalarProperty Name="DateStarted" ColumnName="DateStarted" />
+          <ScalarProperty Name="DateCompleted" ColumnName="DateCompleted" />
+          <ScalarProperty Name="DateEvaluated" ColumnName="DateEvaluated" />
+          <ScalarProperty Name="AnswersXML" ColumnName="AnswersXML" />
+          <ScalarProperty Name="ScorePercent" ColumnName="ScorePercent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TestTemplate">
+      <EntityTypeMapping TypeName="IsTypeOf(TestDeliveryModel.TestTemplate)">
+        <MappingFragment StoreEntitySet="TestTemplate">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="StartInstructions" ColumnName="StartInstructions" />
+          <ScalarProperty Name="QuestionsXML" ColumnName="QuestionsXML" />
+          <ScalarProperty Name="TimeLimit" ColumnName="TimeLimit" />
+          <ScalarProperty Name="IsQuestionTimeLimitEnforced" ColumnName="IsQuestionTimeLimitEnforced" />
+          <ScalarProperty Name="IsRandomOrder" ColumnName="IsRandomOrder" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Priority" ColumnName="Priority" />
+          <ScalarProperty Name="EndInstructions" ColumnName="EndInstructions" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,92 @@
+﻿@model TestDelivery.UI.ViewModels.RespondentTestsList
+@{
+    ViewBag.Title = "Edit respondent";
+}
+@Html.ValidationSummary()
+<h3>Extra info</h3>
+<div class="item bottom-separator">
+    <div class="details">
+        @if (Model.UncompletedTests != 0)
+        {
+            <div class="property">
+                Uncompleted Tests: @Model.UncompletedTests
+            </div>
+        }
+        @if (Model.TestsInProgress != 0)
+        {
+            <div class="property">
+                Tests in progress: @Model.TestsInProgress
+            </div>
+        }
+        @if (Model.UnevaluatedTests != 0)
+        {
+            <div class="property">
+                Unevaluated tests: @Model.UnevaluatedTests
+            </div>
+        }
+        <div class="property">
+            @if (Model.UnevaluatedTests == 0)
+            {<text>Average Score:</text>}
+            else
+            {<text>Partial score:</text>}
+            @Model.Score %
+        </div>
+    </div>
+</div>
+@Html.Partial("~/Views/Respondent/Respondent.cshtml", @Model.Respondent)
+
+
+<div class="editor-label">
+    <label for="secretUrl">Interview URL</label>
+</div>
+<div class="editor-field">
+    @{var interviewUrl = Url.Action("Welcome", "Interview", new { code = Model.Respondent.SecretCode }, Request.Url.Scheme);}
+    <input id="secretUrl" type="text" value="@interviewUrl"
+        disabled="disabled" />
+    <div>
+        <a href="@interviewUrl" target="_blank">Go to interview
+        page</a>
+    </div>
+</div>
+
+
+<h3>Tests</h3>
+<div class="list">
+    @{
+        foreach (var test in Model.Tests)
+        {                      
+        <div class="item bottom-separator">
+            <div class="field long">
+                <a target="_blank" href="@Url.Action("Evaluate", "EvaluateTest", new { id = test.Id })">@test.TestTemplate.Name</a>
+            </div>
+            <div class="details">
+                <div class="property">
+                    Score: @test.ScorePercent %
+                </div>
+                <a href="@Url.Action("Take", "Test", new { code = test.SecretCode })" target="_blank">
+                    Go to test</a>
+            </div>
+            <div class="field options">
+                <button onclick="deleteTest('@test.Id','@test.RespondentId');">Delete</button>
+            </div>
+        </div>
+        }
+    }
+</div>
+
+<script type="text/javascript">
+
+    function deleteTest(TestId, respondentId) {
+        if (confirm("Are you sure?")) {
+            var link = '@Url.Action("DeleteTest", "Respondent", new { id = "99999" })'
+            link = link.replace("99999", TestId);
+            document.location = link;
+        }
+    }
+
+</script>
+
+<div class="actions">
+    <button  onclick="window.location='@Url.Action("AddTest", "Respondent", new { id = Model.Respondent.Id })'">
+        Add Test</button>
+</div>

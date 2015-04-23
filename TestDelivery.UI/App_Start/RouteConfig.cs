@@ -1,0 +1,45 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Http;
+using System.Web.Mvc;
+using System.Web.Routing;
+
+namespace TestDelivery.UI
+{
+    public class RouteConfig
+    {
+        public static void RegisterRoutes(RouteCollection routes)
+        {
+            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
+            routes.MapHttpRoute(
+                name: "DefaultApi",
+                routeTemplate: "api/{controller}/{id}",
+                defaults: new { id = RouteParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "Interview",
+                url: "{controller}/{action}/{code}",
+                defaults: new { controller = "Interview", action = "Welcome", code = UrlParameter.Optional },
+                constraints: new { controller = "Interview"}
+            );
+
+            routes.MapRoute(
+                name: "Test",
+                url: "{controller}/{action}/{code}",
+                defaults: new { action = "Take", code = UrlParameter.Optional },
+                constraints: new { controller = "Test" }
+            );
+           
+            routes.MapRoute(
+                name: "Default",
+                url: "{controller}/{action}/{id}",
+                defaults: new { action = "Index", id = UrlParameter.Optional }
+            );
+
+        }
+    }
+}

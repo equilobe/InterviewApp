@@ -1,0 +1,52 @@
+﻿@model TestDelivery.UI.ViewModels.RespondentVM.RespondentTestTemplateListVM
+@{
+    ViewBag.Title = "Choose Template";
+}
+
+<script type="text/javascript">
+    function showAll(id) {
+        var val = $(id).is(':checked');
+        if (val) {
+            $('.container').removeClass('invisible');
+        }
+        else {
+            $('.container').addClass('invisible');
+        }
+    }
+</script>
+
+<style type="text/css">
+    .invisible {
+        display: none;
+    }
+</style>
+
+<h2>Choose Template</h2>
+
+Show all templates:
+<input type="checkbox" value="0" onchange="showAll(this)" />
+
+<div class="list">
+    @foreach (var template in Model.Templates)
+    {
+        if (template.IsActive)
+        {
+        <div class="item">
+            <a href="@Url.Action("AddTestToRespondent", "Respondent", new { templateId = template.Id, respondentId = Model.RespondentId })" >@template.Name</a>
+        </div>
+        }
+    }
+</div>
+
+<div class="list container invisible">
+    @foreach (var template in Model.Templates)
+    {
+         if (!template.IsActive)
+        {
+        <div class="item">
+            <a href="@Url.Action("AddTestToRespondent", "Respondent", new { templateId = template.Id, respondentId = Model.RespondentId })" >@template.Name</a>
+        </div>
+        }
+    }
+</div>
+

@@ -1,0 +1,43 @@
+﻿@model TestDelivery.DAL.TestTemplate
+
+@Html.HiddenFor(m => m.Id)
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.TimeLimit)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.TimeLimit)
+    @Html.ValidationMessageFor(model => model.TimeLimit)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.IsQuestionTimeLimitEnforced)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.IsQuestionTimeLimitEnforced)
+    @Html.ValidationMessageFor(model => model.IsQuestionTimeLimitEnforced)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.IsRandomOrder)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.IsRandomOrder)
+    @Html.ValidationMessageFor(model => model.IsRandomOrder)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.IsActive)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.IsActive)
+    @Html.ValidationMessageFor(model => model.IsActive)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Priority)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Priority)
+    @Html.ValidationMessageFor(model => model.Priority)
+</div>

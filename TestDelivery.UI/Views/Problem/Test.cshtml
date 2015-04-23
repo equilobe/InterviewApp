@@ -1,0 +1,30 @@
+﻿@model TestDelivery.DAL.Questions.Question
+@{
+    Layout = null;
+    var problem = (TestDelivery.DAL.Questions.Problem)Model;
+}
+
+@Html.Partial("~/Views/Question/Test.cshtml")
+
+
+@if (problem.AnswerSections != null)
+{
+    <div class="answer-sections">
+    
+        @for (int i = 0; i < problem.AnswerSections.Count; i++)
+        {
+            var id = TestDelivery.BL.AnswerResolvers.FreeTextQuestionAnswerResolver.ANSWER_FIELD_NAME + "[" + i + "]";
+        <div class="problem-answer">
+            <label for="@Html.Id(id)">@problem.AnswerSections[i].Name</label>
+            <textarea id="@Html.Id(id)" name="@Html.Name(id)" />
+        </div>
+        }
+
+        <script type="text/javascript">
+            $(function () {
+                $(".answer-sections textarea").autosize({ append: "\n" });
+            });
+        </script>
+    </div>
+}
+

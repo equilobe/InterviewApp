@@ -1,0 +1,28 @@
+﻿@model TestDelivery.DAL.Test
+@{
+    Layout = "~/Views/Shared/RespondentLayout.cshtml";
+    ViewBag.Title = Model.TestTemplate.Name;
+    ViewBag.Name = Model.Respondent.Name;
+    ViewBag.Email = Model.Respondent.Email;
+}
+
+<div class="test content-box">
+    <div class="title">
+        @Model.TestTemplate.Name
+    </div>
+    <div class="container">
+    </div>
+</div>
+
+
+@section scripts{
+    @Scripts.Render("~/bundles/TestDelivery")
+
+    <script type="text/javascript">
+        var nextUrl = '@Url.Action("next", new { code = Model.SecretCode })';
+        var startUrl = '@Url.Action("welcome", new { code = Model.SecretCode })';
+
+        $(function () { Test.init(); });
+
+    </script>
+}

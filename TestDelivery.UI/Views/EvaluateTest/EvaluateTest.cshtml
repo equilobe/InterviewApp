@@ -1,0 +1,69 @@
+﻿@model TestDelivery.UI.ViewModels.Evaluate.EvaluateTestVM
+@{
+    Layout = null;
+    ViewBag.Title = "Evaluate Test";
+}
+
+<h2>@Model.Test.TestTemplate.Name</h2>
+
+<div class="test-details">
+    @if (Model.Test.IsEvaluated)
+    {
+        <div class="test-property">
+            <label>Score (%)</label>
+            <span><strong>@Model.Test.ScorePercent</strong></span>
+        </div>
+    }
+    else
+    {
+        <div class="test-property partial-score">
+            <label>Partial score </label>
+            <span>@Model.Test.ScorePercent %</span>
+        </div>
+    }
+    <div class="test-property">
+        <label>Respondent</label>
+        <span><strong>@Model.Test.Respondent.Name</strong> (@Model.Test.Respondent.Email)</span>
+    </div>
+    @if (Model.Test.Duration > TimeSpan.MinValue)
+    {
+        <div class="test-property">
+            <label>Duration</label>
+            <span>@Model.Test.Duration.ToDurationString()</span>
+        </div>
+    }
+    @if (Model.Test.HasStarted)
+    {
+        <div class="test-property">
+            <label>Taken on</label>
+            <span>@Model.Test.DateStarted.Value.ToLongDateString() @Model.Test.DateStarted.Value.ToShortTimeString()</span>
+        </div>
+    }
+    @if (Model.Test.IsEvaluated)
+    {
+        <div class="test-property">
+            <label>Evaluated</label>
+            <span>@Model.Test.DateEvaluated.Value.ToLongDateString() @Model.Test.DateEvaluated.Value.ToShortTimeString()</span>
+        </div>
+    }
+</div>
+
+<h3>Questions</h3>
+<div class="accordion">
+
+    @foreach (var answerVM in Model.Answers)
+    {        
+        @Html.Partial("QuestionAnswer", answerVM)
+    }
+</div>
+
+<script>
+    $(function() {
+        $( ".accordion" ).accordion({
+            heightStyle: "content",
+            collapsible: true,
+            active: false,
+            animated: false
+        });
+    });
+</script>

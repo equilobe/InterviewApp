@@ -1,0 +1,26 @@
+﻿@model List<TestDelivery.DAL.Test>
+
+@{
+    ViewBag.Title = "Evaluate Tests";
+}
+
+<h2>Evaluate Tests</h2>
+
+<div id="count" class="list" data-count="@Model.Count">
+
+    @{
+        foreach (var test in Model)
+        {
+                     
+        var activeClass = test.DateEvaluated!=null ? string.Empty : " inactive";
+             
+        <div class="item bottom-separator @activeClass">
+            
+             <a target="_self" href="@Url.Action("Evaluate", "EvaluateTest", new { id = test.Id })">
+                @test.TestTemplate.Name - @test.Respondent.Name            
+                 </a>
+            
+        </div>
+        }
+    }
+</div>

@@ -1,0 +1,15 @@
+﻿@model TestDelivery.ServiceLayer.Lists.IPage
+
+<div class="pager" data-current-page="@Model.CurrentPage">
+    <input type="button" value="<" onclick="previousPage(this);" @Html.Disable(!Model.HasPreviousPage) />
+    <input type="button" value=">" onclick="nextPage(this);" @Html.Disable(!Model.HasNextPage)  />
+
+    @if (Model.EndItemPosition >= Model.StartItemPosition)
+    {
+        <span>@Model.StartItemPosition</span>
+        <span>-</span>
+        <span>@Model.EndItemPosition</span>
+        <span>of</span>    
+        <span>@Model.TotalItemsCount</span>
+    }
+</div>

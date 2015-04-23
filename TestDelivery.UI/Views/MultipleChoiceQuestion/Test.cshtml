@@ -1,0 +1,18 @@
+﻿@model TestDelivery.DAL.Questions.MultipleChoiceQuestion
+
+@Html.Partial("~/Views/Question/Test.cshtml")
+@{
+    var inputType = Model.HasMultipleAnswers ? "checkbox" : "radio";
+}
+
+<div class="list multiple-choice-answer-list">
+    @foreach (var answer in Model.Answers)
+    {        
+        <div class="item multiple-choice-answer">
+            <input id="answer-@answer.Id" class="question-option" type="@inputType" name="answer" value="@answer.Id" />
+            <label for="answer-@answer.Id">@answer.Text</label>
+        </div>
+    }
+</div>
+
+

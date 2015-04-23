@@ -1,0 +1,9 @@
+﻿@model System.Collections.Generic.List<TestDelivery.DAL.Questions.Question>
+@{   
+    Layout = null;
+}
+
+@foreach (var q in Model)
+{
+    @Html.Partial("~/Views/Template/Question.cshtml", q)
+}

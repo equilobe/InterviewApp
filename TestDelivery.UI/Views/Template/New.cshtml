@@ -1,0 +1,19 @@
+﻿@model TestDelivery.DAL.TestTemplate
+
+<div class="new-template-button">
+    <input type="button" value="New template" onclick="startNewTemplate();" />
+</div>
+<div class="new-template-form" style="display:none;">
+    @using (Html.BeginForm("New", "Template"))
+    {
+        @Html.ValidationSummary()
+        <div class="editor-label">
+            @Html.LabelFor(m => m.Name, "Template name")
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(m => m.Name)
+        </div>
+        <input type="submit" value="Add" />
+        <input type="button" value="Cancel" onclick="cancelNewTemplate();" />
+    }
+</div>

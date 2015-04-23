@@ -1,0 +1,28 @@
+﻿@model TestDelivery.DAL.Questions.Question
+@Html.HiddenFor(model => model.Id)
+@Html.HiddenFor(model => model.Tags)
+
+@Html.EditableFieldFor(m => m.Summary)
+@Html.EditableFieldFor(m => m.Content, raw: true)
+
+@Html.EditableFieldFor(m => m.TimeLimit)
+@Html.EditableFieldFor(m => m.Score)
+
+
+<script type="text/javascript">
+    $(function () {
+
+        if (typeof (canEditTemplate) === "boolean" && !canEditTemplate) {
+            $("input[name='" + "@Html.NameFor(m => m.Score)" + "']").attr("disabled", "");
+        }
+
+        tinymce.init({
+            selector: ".edit-question-form .html-field textarea",
+            menubar: false,
+            plugins: "link",
+            toolbar: "undo redo | bold italic removeformat | styleselect fontselect fontsizeselect | bullist numlist outdent indent | link"
+        });
+
+    });
+
+</script>

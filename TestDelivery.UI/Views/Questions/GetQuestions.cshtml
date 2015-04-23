@@ -1,0 +1,12 @@
+﻿@model TestDelivery.ServiceLayer.Lists.Page<TestDelivery.DAL.Questions.Question>
+@{
+    Layout = null;
+}
+@Html.Partial("~/Views/Paging/Pager.cshtml")
+
+<div class="questions list">
+    @foreach (var question in Model.Items)
+    {
+        @Html.Partial("IndexQuestionListItem", question)
+    }
+</div>

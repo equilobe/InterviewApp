@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TestDelivery.DAL.Questions.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="TestDeliveryDALQuestionsStoreContainer">
+    <EntitySet Name="Questions" EntityType="TestDelivery.DAL.Questions.Store.Questions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Questions_Problem" EntityType="TestDelivery.DAL.Questions.Store.Questions_Problem" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Questions_FreeTextQuestion" EntityType="TestDelivery.DAL.Questions.Store.Questions_FreeTextQuestion" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Questions_MultipleChoiceQuestion" EntityType="TestDelivery.DAL.Questions.Store.Questions_MultipleChoiceQuestion" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Problem_inherits_Question" Association="TestDelivery.DAL.Questions.Store.FK_Problem_inherits_Question">
+      <End Role="Question" EntitySet="Questions" />
+      <End Role="Problem" EntitySet="Questions_Problem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FreeTextQuestion_inherits_Question" Association="TestDelivery.DAL.Questions.Store.FK_FreeTextQuestion_inherits_Question">
+      <End Role="Question" EntitySet="Questions" />
+      <End Role="FreeTextQuestion" EntitySet="Questions_FreeTextQuestion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MultipleChoiceQuestion_inherits_Question" Association="TestDelivery.DAL.Questions.Store.FK_MultipleChoiceQuestion_inherits_Question">
+      <End Role="Question" EntitySet="Questions" />
+      <End Role="MultipleChoiceQuestion" EntitySet="Questions_MultipleChoiceQuestion" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Questions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Summary" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Tags" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="TimeLimit" Type="int" Nullable="false" />
+    <Property Name="Score" Type="int" Nullable="false" />
+    <Property Name="Content" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ExtendedPropertiesXml" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Questions_Problem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Questions_FreeTextQuestion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Questions_MultipleChoiceQuestion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Problem_inherits_Question">
+    <End Role="Question" Type="TestDelivery.DAL.Questions.Store.Questions" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Problem" Type="TestDelivery.DAL.Questions.Store.Questions_Problem" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Problem">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FreeTextQuestion_inherits_Question">
+    <End Role="Question" Type="TestDelivery.DAL.Questions.Store.Questions" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="FreeTextQuestion" Type="TestDelivery.DAL.Questions.Store.Questions_FreeTextQuestion" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FreeTextQuestion">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MultipleChoiceQuestion_inherits_Question">
+    <End Role="Question" Type="TestDelivery.DAL.Questions.Store.Questions" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="MultipleChoiceQuestion" Type="TestDelivery.DAL.Questions.Store.Questions_MultipleChoiceQuestion" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MultipleChoiceQuestion">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TestDelivery.DAL.Questions" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="QuestionsDao" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Questions" EntityType="TestDelivery.DAL.Questions.Question" />
+        </EntityContainer>
+        <EntityType Name="Question" Abstract="true">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Summary" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Tags" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="TimeLimit" Type="Int32" Nullable="false" />
+          <Property Name="Score" Type="Int32" Nullable="false" />
+          <Property Name="Content" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ExtendedPropertiesXml" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" a:GetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Internal" />
+        </EntityType>
+        <EntityType Name="Problem" BaseType="TestDelivery.DAL.Questions.Question" />
+        <EntityType Name="FreeTextQuestion" BaseType="TestDelivery.DAL.Questions.Question" />
+        <EntityType Name="MultipleChoiceQuestion" BaseType="TestDelivery.DAL.Questions.Question" />
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TestDeliveryDALQuestionsStoreContainer" CdmEntityContainer="QuestionsDao">
+    <EntitySetMapping Name="Questions">
+      <EntityTypeMapping TypeName="IsTypeOf(TestDelivery.DAL.Questions.Question)">
+        <MappingFragment StoreEntitySet="Questions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Summary" ColumnName="Summary" />
+          <ScalarProperty Name="Tags" ColumnName="Tags" />
+          <ScalarProperty Name="TimeLimit" ColumnName="TimeLimit" />
+          <ScalarProperty Name="Score" ColumnName="Score" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="ExtendedPropertiesXml" ColumnName="ExtendedPropertiesXml" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(TestDelivery.DAL.Questions.Problem)">
+        <MappingFragment StoreEntitySet="Questions_Problem">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(TestDelivery.DAL.Questions.FreeTextQuestion)">
+        <MappingFragment StoreEntitySet="Questions_FreeTextQuestion">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(TestDelivery.DAL.Questions.MultipleChoiceQuestion)">
+        <MappingFragment StoreEntitySet="Questions_MultipleChoiceQuestion">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

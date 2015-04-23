@@ -1,0 +1,62 @@
+﻿@model List<TestDelivery.UI.ViewModels.RespondentListItem>
+@{
+    ViewBag.Title = "Respondents";
+}
+
+<h2>Respondents</h2>
+
+
+<script type="text/javascript">
+    function deleteRespondent(id) {
+        var conf = confirm("Are you sure you want to delete this respondent? All associated tests will also be deleted");
+        if (conf) {
+            guid = id;
+            link = '@Url.Action("DeleteRespondent", new { id = 999999 })';
+            link = link.replace("999999", guid);
+            document.location = link;
+        }
+
+    }
+
+</script>
+
+<div id="count" class="list" >
+    @foreach (var item in Model)
+    {
+                      
+        <div class="item">
+            <a target="_self" href="@Url.Action("Edit", "Respondent", new { id = @item.Respondent.Id })">@item.Respondent.Name
+                (@item.Respondent.Email)</a>
+            <span class="options">
+                <button onclick="deleteRespondent('@item.Respondent.Id');">Delete</button>
+                 </span>
+                <div class="item bottom-separator">
+                    <div class="details">
+                        <div class="property">
+                            @if (item.ExtraInfo.UnevaluatedTests != 0 || item.ExtraInfo.UnstartedTests != 0)
+                            {
+                                <text>Partial score: </text> 
+                            }
+                            else{
+                                <text>Average score: </text>
+                            }
+                            @item.ExtraInfo.Score
+                        </div>
+                        <div class="property">
+                            Unstarted Tests: @item.ExtraInfo.UnstartedTests
+                        </div>
+                        <div class="property">
+                            Unevaluated Tests: @item.ExtraInfo.UnevaluatedTests
+                        </div>
+                        <div class="property">
+                            Tests in progress: @item.ExtraInfo.TestsInProgress
+                        </div>
+                    </div>
+                </div>
+           
+        </div>
+         
+    }
+</div>
+
+<button onclick="document.location='@Url.Action("New")'">Add</button>

@@ -1,0 +1,55 @@
+﻿@model TestDelivery.UI.ViewModels.Evaluate.EvaluateAnswerVM
+
+@{
+    var q = (TestDelivery.DAL.Questions.FreeTextQuestion)Model.Question;
+    var a = (TestDelivery.DAL.FreeTextAnswer)Model.Answer;
+}
+
+@if (!string.IsNullOrEmpty(q.Content))
+{
+    <div class="question-text">
+        @Html.Raw(q.Content)
+    </div>
+}
+
+@if (!string.IsNullOrEmpty(q.EvaluatorNotes))
+{
+    <div class="evaluator-notes">
+        <div class="label">
+            <label>Evaluator notes</label>
+        </div>
+        @Html.Raw(q.EvaluatorNotes)
+    </div>
+}
+
+@if (q.CorrectAnswers.Any())
+{
+    <div class="correct-answers">
+        <div class="label">
+            <label>Correct answers</label>
+        </div>
+        @foreach (var answer in q.CorrectAnswers)
+        {            
+            <span>@answer</span>
+        }
+    </div>
+}
+
+@if (q.WrongAnswers.Any())
+{
+    <div class="wrong-answers">
+        <div class="label">
+            <label>Wrong answers</label>
+        </div>
+        @foreach (var answer in q.WrongAnswers)
+        {            
+            <span>@answer</span>
+        }
+    </div>
+}
+
+<div class="label">
+    <label>Respondent's answer</label>
+</div>
+<pre class="answer-text">@a.Text</pre>
+

@@ -1,0 +1,57 @@
+﻿@model TestDelivery.UI.ViewModels.WelcomeModel
+@{
+    Layout = "~/Views/Shared/RespondentLayout.cshtml";
+    ViewBag.Name = Model.Respondent.Name;
+    ViewBag.Email = Model.Respondent.Email;
+    ViewBag.Title = "Welcome";
+}
+<div class="content-box">
+    <div class="title">Interviu
+    </div>
+
+    <p>
+        Bine ai venit la interviul online Equilobe. 
+    </p>
+
+    <p>
+        Interviul este format din mai multe teste, unele cu intrebari si altele cu probleme.
+        Testele sunt contra cronometru.
+    </p>
+
+    <p>
+        Cand esti gata sa mergi la primul test, apasa pe butonul de mai jos. Testul nu va
+        incepe direct. Vei vedea mai intai o pagina de introducere cu informatii despre
+        test.
+    </p>
+
+    <p class="attention">
+        Asigura-te ca folosesti un broswer modern (IE 9, Chrome, Firefox) si ca ai JavaScript
+        activat.
+    </p>
+
+    <p>
+        <strong>Succes!
+        </strong>
+    </p>
+
+    @if(Model.TotalDuration.TotalSeconds>0){
+    <p class="hint">
+        Durata interviu: @Model.TotalDuration.ToDurationString()
+    </p>
+    }
+    else{
+        <p class="hint">
+            Momentan nu ai nici un test disponibil
+        </p>
+    }
+
+
+    @if (Model.NextTest != null)
+    {
+        <div class="actions">
+            <button onclick="window.location = '@Url.Action("take", "test", new { code = @Model.NextTest.SecretCode })'">
+                Primul test</button>
+        </div>
+    }
+</div>
+

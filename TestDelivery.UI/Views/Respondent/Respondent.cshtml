@@ -1,0 +1,50 @@
+﻿@model TestDelivery.DAL.Respondent
+@{
+    var title = Model.Id == Guid.Empty ? "Add respondent" : "Edit respondent";
+}
+
+
+<h2>@title</h2>
+
+
+@using (Html.BeginForm("Save", "Respondent"))
+{
+    @Html.ValidationSummary()
+    @Html.HiddenFor(m => m.Id)
+
+    <div class="editor-label">
+        @Html.LabelFor(m => m.Name, "Respondent name")
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(m => m.Name)
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(m => m.Email, "Email")
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(m => m.Email)
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(m => m.PhoneNumber, "Phone No")
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(m => m.PhoneNumber)
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(m => m.Url, "Url")
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(m => m.Url)
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(m => m.Notes, "Notes")
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(m => m.Notes)
+    </div>
+        
+    <p>
+        <input type="submit" value="Save" />
+    </p>
+
+}

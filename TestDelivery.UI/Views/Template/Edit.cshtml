@@ -1,0 +1,98 @@
+﻿@model TestDelivery.UI.ViewModels.Templates.EditTemplateViewModel
+@{
+    ViewBag.Title = Model.Template.Name;
+}
+
+@if (!Model.CanEdit)
+{
+    <style type="text/css">
+        .selected-questions .options {
+            display: none;
+        }
+    </style>
+}
+
+<h2></h2>
+
+@using (Html.BeginForm("Save", "Template"))
+{
+    <div class="intro">
+        @Html.Partial("Name", Model.Template)
+
+        @if (!Model.CanEdit)
+        {
+            <p>
+                Theare are some parts of this template that you can't edit, because it's in
+                use.
+            </p>
+            <p>
+                To edit all parts of the template you can
+                 <a>delete all tests</a> 
+                    or 
+                @Html.ActionLink("crate a copy", "Copy", new { id = Model.Template.Id })
+                .
+            </p>
+        }
+    </div>
+
+    <div id="tabs" class="free-tabs">
+        <ul>
+            <li><a href="#tabs-1">General</a></li>
+            <li><a href="#tabs-2">Instructions</a></li>
+            <li><a href="#tabs-3">Questions</a></li>
+        </ul>
+
+        <div id="tabs-1">
+            @Html.Partial("General", Model.Template)
+        </div>
+
+        <div id="tabs-2">
+            @Html.Partial("Instructions", Model.Template)
+        </div>
+        <div id="tabs-3">
+            <div class="question-selector-container">
+                <div class="question-selector">
+                    <div class="selected-questions-section">
+                        @if (Model.CanEdit)
+                        {
+                            <p>
+                                Add questions by using the buttons below. Drag questions to reorder.
+                            </p>
+                            <div class="add-commands">
+                                @foreach (var controllerName in Model.NewQuestionControllerNames)
+                                {
+                                    <button type="button" onclick="createNewTemplateQuestion('@Url.Action("NewTemplateQuestion", controllerName, new { templateId = Model.Template.Id })');">
+                                        Add @controllerName</button>
+                                }
+                            </div>                                
+                        }
+                        else
+                        {
+                            <p class="attention">
+                                You can't add or delete questions. You can only reorder and edit them.
+                            </p>
+                        }
+                        <div class="selected-questions list" data-url="@Url.Action("Question", "Template", new { id = Model.Template.Id, questionId = "****" })">
+                            @Html.Partial("Questions", Model.Template.Questions)
+                        </div>
+                    </div>
+                    <div class="edit-question-container" data-url="@Url.Action("EditQuestion", "Template", new { id = Model.Template.Id, questionId = "****" })">
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" name="QuestionIds" />
+        </div>
+    </div>
+    @Html.ValidationSummary()
+    <input type="submit" value="Save" />
+}
+@section scripts{
+    @Scripts.Render("~/Scripts/CreateTemplate.js")
+    <script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>
+    <script type="text/javascript">
+        var questionsUrl = "@Url.Action("GetTemplateQuestions", "Questions")";
+        $(function () {
+            initCreateTemplatePage(@Model.CanEdit.ToString().ToLower());
+        })
+    </script>
+}

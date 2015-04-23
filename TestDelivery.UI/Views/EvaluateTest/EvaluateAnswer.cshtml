@@ -1,0 +1,22 @@
+﻿@model TestDelivery.UI.ViewModels.Evaluate.EvaluateAnswerVM
+@if (!Model.Answer.IsExpired)
+{
+    <div class="evaluate-answer">
+        <button onclick="markCorrectAnswer('@Url.Action("Correct", "Answers", new { testId = Model.Test.Id, questionId = Model.Question.Id })')">
+            Correct
+        </button>
+
+        <button onclick="markIncorrectAnswer('@Url.Action("Incorrect", "Answers", new { testId = Model.Test.Id, questionId = Model.Question.Id })')">
+            Incorrect
+        </button>
+
+        @if (Model.Question.Score > 1)
+        {
+            <input name="score" type="number" value="@Model.Answer.Score" />
+            <span>/ @Model.Question.Score</span>
+            <button onclick="evaluateAnswer('@Url.Action("Score", "Answers", new { testId = Model.Test.Id, questionId = Model.Question.Id })', this)">
+                Save
+            </button>
+        }
+    </div>
+}

@@ -1,0 +1,15 @@
+﻿@model TestDelivery.DAL.Test
+@{
+    Layout = null;
+}
+
+@Html.Raw(Model.TestTemplate.StartInstructions)
+
+@if (Model.TestTemplate.MaxDuration != TimeSpan.MaxValue)
+{
+    <p class="hint">Durata test: @Model.TestTemplate.MaxDuration.ToDurationString()</p>
+}
+
+<div class="actions">
+    <button class="start-button" onclick="Test.goNext();">Porneste test</button>
+</div>

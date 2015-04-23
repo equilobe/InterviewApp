@@ -1,0 +1,33 @@
+﻿@model TestDelivery.UI.ViewModels.TestQuestionModel
+@{
+    Layout = null;
+}
+
+<script type="text/javascript">
+    $(function () {
+        initQuestion();
+    });
+</script>
+
+
+<div class="test-info">
+    <div class="test-timer" id="test-timer" data-testTimePassed="@Model.TestTimePassed" data-testTimeLimit="@Model.TestTimeLimit">
+    </div>
+
+    <div class="question-timer" id="question-timer" data-TimeLimit="@Model.Question.TimeLimit" data-timePassed="@Model.TimePassed">
+    </div>
+    <div class="test-progress">
+        @Model.QuestionNumber/@Model.QuestionCount
+    </div>
+</div>
+
+<div id="question" class="question-content" data-TimeLimit="@Model.Question.TimeLimit" data-timePassed="@Model.TimePassed">
+    @Html.Partial(Model.QuestionViewPath, Model.Question, new ViewDataDictionary())
+</div>
+@{var buttonText = (Model.QuestionNumber == Model.QuestionCount) ? "Sfarsit" : "Inainte";}
+<div class="actions">
+    <button onclick="Test.goNextWithAnswer();">@buttonText</button>
+</div>
+
+
+

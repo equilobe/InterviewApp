@@ -1,0 +1,17 @@
+﻿@model TestDelivery.DAL.Test
+@{
+    ViewBag.Title = "Evaluate Test";
+    }
+
+<div class="main-container evaluate-test" data-url="@Url.Action("EvaluateTest", "EvaluateTest", new {id = Model.Id})" >
+
+</div>
+
+@section scripts{
+    @Scripts.Render("~/Scripts/Tests/Evaluate.js")
+    <script type="text/javascript">
+        $(function () {
+            loadTestEvaluation();
+        });
+    </script>    
+}

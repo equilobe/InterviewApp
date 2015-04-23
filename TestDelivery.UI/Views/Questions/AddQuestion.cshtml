@@ -1,0 +1,82 @@
+﻿@model TestDelivery.DAL.Questions.Question
+@{
+    ViewBag.Title = "AddQuestion";
+}
+
+<h2>AddQuestion</h2>
+<style type="text/css">
+    .input-validation-error {
+        border: 1px solid #ff0000;
+        background-color: #ffeeee;
+        color: #ff0000;
+    }
+
+    .field-validation-error {
+        color: #ff0000;
+        font-weight: bold;
+    }
+
+    .validation-summary-errors {
+        color: #f00;
+    }
+</style>
+
+@using (@Html.BeginForm("AddQuestion", "Questions", FormMethod.Post))
+{
+    @Html.ValidationSummary();
+
+        <ol>
+            <li>
+                <div class="editor-label">
+                    @Html.LabelFor(m => m.Id)
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(m => m.Id)
+                </div>
+            </li>
+            <li>
+                <div class="editor-label">
+                    @Html.LabelFor(m => m.Summary, "Question Summary")
+                </div>
+                <div class="editor-field">
+                    @Html.TextAreaFor(m => m.Summary)
+                </div>
+            </li>
+            <li>
+                <div class="editor-label">
+                    @Html.LabelFor(m => m.Content, "Question content")
+                </div>
+                <div class="editor-field">
+                    @Html.TextAreaFor(m => m.Content)
+                </div>
+            </li>
+            <li>
+                <div class="editor-label">
+                    @Html.LabelFor(m => m.Tags, "Question tags")
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(m => m.Tags)
+                </div>
+            </li>
+            <li>
+                <div class="editor-label">
+                    @Html.LabelFor(m => m.Score, "Question score")
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(m => m.Score)
+                </div>
+            </li>
+            <li>
+                <div class="editor-label">
+                    @Html.LabelFor(m => m.TimeLimit, "Question time limit")
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(m => m.TimeLimit)
+                </div>
+            </li>
+        </ol>
+        @{var inputText = Model == null ? "Add" : "Save";}
+        <input type="submit" value="@inputText" />
+
+}
+<button onclick="document.location='@Url.Action("Index")'">Cancel</button>

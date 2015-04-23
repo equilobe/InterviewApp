@@ -1,0 +1,41 @@
+﻿@model TestDelivery.UI.ViewModels.Evaluate.EvaluateAnswerVM
+
+@{
+    var q = (TestDelivery.DAL.Questions.Problem)Model.Question;
+    var a = (TestDelivery.DAL.ProblemAnswer)Model.Answer;
+}
+
+@if (!string.IsNullOrEmpty(q.Content))
+{
+    <div class="question-text">
+        @Html.Raw(q.Content)
+    </div>
+}
+
+@if (!string.IsNullOrEmpty(q.EvaluatorNotes))
+{
+    <div class="evaluator-notes">
+        <div class="label">
+            <label>Evaluator notes</label>
+        </div>
+        @Html.Raw(q.EvaluatorNotes)
+    </div>
+}
+
+@if (!a.IsExpired && q.AnswerSections != null && a.SectionAnswers != null)
+{
+    <div class="label">
+        <label>Answer sections</label>
+    </div>
+    <div class="answer-sections">
+        @for (int i = 0; i < q.AnswerSections.Count; i++)
+        {            
+            <div class="answer-section">
+                <div class="label">
+                    <label>@q.AnswerSections[i].Name</label>
+                </div>
+                <pre>@a.SectionAnswers[i]</pre>
+            </div>
+        }
+    </div>
+}

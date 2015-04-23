@@ -1,0 +1,15 @@
+﻿@model TestDelivery.DAL.Questions.Question
+@{
+    Layout = null;
+}
+
+<div class="question-body">
+    @if (string.IsNullOrWhiteSpace(Model.Content))
+    { 
+        <p class="summary">@Model.Summary</p>
+    }
+    else
+    {
+        @Html.Raw(Model.Content)
+    }
+</div>

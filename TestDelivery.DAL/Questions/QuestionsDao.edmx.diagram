@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c7e3c9db24de4e39a886795ff2f86b23" Name="Diagram1">
+        <EntityTypeShape EntityType="TestDelivery.DAL.Questions.Question" Width="1.5" PointX="5.125" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestDelivery.DAL.Questions.Problem" Width="1.5" PointX="2.875" PointY="2.375" />
+        <InheritanceConnector EntityType="TestDelivery.DAL.Questions.Problem" />
+        <EntityTypeShape EntityType="TestDelivery.DAL.Questions.FreeTextQuestion" Width="1.875" PointX="7.125" PointY="2.125" />
+        <InheritanceConnector EntityType="TestDelivery.DAL.Questions.FreeTextQuestion" />
+        <EntityTypeShape EntityType="TestDelivery.DAL.Questions.MultipleChoiceQuestion" Width="1.875" PointX="9.75" PointY="2.625" />
+        <InheritanceConnector EntityType="TestDelivery.DAL.Questions.MultipleChoiceQuestion" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css/respondent-css")
+   
+</head>
+<body>
+    <div class="page">
+        <div class="header">
+            <div class="logo">
+                <img src="~/Images/logo.png" alt="Equilobe" />
+            </div>
+            <div class="candidate-info">
+                @ViewBag.Name (@ViewBag.Email)
+            </div>
+        </div>
+        @RenderBody()
+        <div class="footer">
+            &copy; Equilobe Software 2007-2012
+        </div>
+    </div>
+
+
+    @Scripts.Render("~/bundles/jquery",
+                    "~/bundles/jqueryui")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

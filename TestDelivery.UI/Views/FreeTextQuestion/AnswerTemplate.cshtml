@@ -1,0 +1,16 @@
+﻿@model System.String
+@{    
+    var oldPrefix = ViewData.TemplateInfo.HtmlFieldPrefix;
+    ViewData.TemplateInfo.HtmlFieldPrefix = (string.IsNullOrEmpty(oldPrefix) ? string.Empty : (oldPrefix + ".")) + "answertemplate";   
+}
+
+<div class="answer item">
+    @Html.TextBoxFor(m => m)
+    <span class="options">
+        <button type="button" onclick="FreeTextQuestion.deleteAnswer(this)">Delete</button>
+    </span>
+</div>
+
+@{
+    ViewData.TemplateInfo.HtmlFieldPrefix = oldPrefix;
+}

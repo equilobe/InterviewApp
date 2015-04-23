@@ -1,0 +1,61 @@
+﻿
+@import "_Variables";
+
+.question-selector-container
+{
+    display: table;
+    width: 100%;
+
+    .question-selector
+    {
+        display: table-row;
+
+        .available-questions-section
+        {
+            display: table-cell;
+            max-width: 400px;
+            padding-left: 20px;
+        }
+
+        .selected-questions-section
+        {
+            display: table-cell;
+            max-width: 400px;
+            width: 50%;
+        }
+
+        .edit-question-container
+        {
+            display: table-cell;
+            max-width: 400px;
+            width: 50%;
+            padding-left: 20px;
+        }
+
+        .question
+        {
+            display: block;
+            border-bottom: 1px solid @borderColor;
+            padding: 0.5em 0 0.5em 0;
+            background: white;
+            margin: 0;
+        }
+
+        .selected-questions
+        {
+            background: #ccc;
+
+            .question.added
+            {
+                background: white;
+            }
+        }
+
+        .questions .options
+        {
+            display: none;
+        }
+    }
+}
+   
+

@@ -1,0 +1,35 @@
+﻿@model TestDelivery.UI.ViewModels.Evaluate.EvaluateAnswerVM
+
+@{
+    var evaluateClass = Model.Answer.IsEvaluated ? "evaluated" : "unevaluated";
+    var questionClass = Model.Question.GetType().Name;
+}
+
+
+
+<h3>
+    <div class="question-details float-right">
+        <span class="@(Model.Answer.IsEvaluated ? string.Empty : "unevaluated")">Score:
+            @(Model.Answer.IsEvaluated ? Model.Answer.Score.ToString() : "-")</span>               
+    </div>
+    @Model.Question.Summary
+    <div class="clear"></div>
+</h3>
+
+<div class="answer @questionClass @evaluateClass">
+    <div class="float-right question-details">
+        <span>Max score: @Model.Question.Score</span>
+        @if (Model.Answer.IsExpired)
+        {
+            <span>Expired (@Model.Answer.Duration.TotalSeconds / @Model.Question.TimeLimit sec)</span>
+        }
+        else
+        {
+            <span>@Model.Answer.Duration.ToDurationString(true) (@Model.Answer.GetTimeLimitPercent(Model.Question.TimeLimit) %)</span>
+        }
+    </div>
+
+    @Html.Partial(Model.ViewPath)
+
+    @Html.Partial("~/Views/EvaluateTest/EvaluateAnswer.cshtml")
+</div>

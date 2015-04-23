@@ -1,0 +1,19 @@
+﻿@model TestDelivery.UI.ViewModels.Evaluate.EvaluateAnswerVM
+@{
+    var q = (TestDelivery.DAL.Questions.MultipleChoiceQuestion)Model.Question;
+    var a = (TestDelivery.DAL.MultipleChoiceAnswer)Model.Answer;
+}
+
+<div>Multiple choice question - Auto-evaluated</div>
+
+@*<div class="possible-answers list">
+    @for (int i = 0; i < q.Answers.Count; i++)
+    {
+        var answer = q.Answers[i];
+        var correctAnswerClass = answer.IsCorrect ? "correct-answer" : string.Empty;
+        var selectdAnswerClass = a.GivenAnswerIds.Contains(i) ? "selected-answer" : string.Empty;
+        <div class="item @correctAnswerClass @selectdAnswerClass">
+            @answer.Text
+        </div> 
+    }
+</div>*@

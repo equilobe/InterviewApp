@@ -1,0 +1,159 @@
+﻿
+@import "_Variables";
+
+.editor-field
+{
+    &.header-field
+    {
+        input[type="text"]
+        {
+            border-style: none;
+            border-bottom-style: solid;
+            font-weight: bold;
+        }
+    }
+
+    input[type="text"],
+    input[type="password"],
+    textarea,
+    input[type=number],
+    input:not([type]),
+    input[type="color"],
+    input[type="date"],
+    input[type="datetime"],
+    input[type="datetime-local"],
+    input[type="email"],
+    input[type="month"],
+    input[type="search"],
+    input[type="tel"],
+    input[type="time"],
+    input[type="url"],
+    input[type="week"]
+    {
+        border: 1px solid @borderColor;
+        margin: 5px 0 6px 0;
+        padding: 5px;
+        font-family: Arial;
+        min-width: 200px;
+        width: 95%;
+
+        &:focus
+        {
+            border-color: @FocusedColor;
+        }
+
+        &:disabled
+        {
+            background-color: @DisabledColor;
+        }
+    }
+
+
+    textarea
+    {
+        font-family: @descriptionFontFamily;
+    }
+
+    input[type=checkbox]
+    {
+        margin: 5px 0 6px 0;
+    }
+
+
+    
+}
+
+  
+.submit, input[type="submit"] {
+    background-color: @buttonColor;
+    border: 1px solid darken(@buttonColor,40%); 
+    cursor: pointer;
+    font-size: @emphasisFont;
+    font-weight: 600;
+    padding: 7px;
+}
+
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+	legend
+    {
+        display: none;
+    }
+}
+
+
+.editor-label {
+    font-weight: bold;
+    margin-top: 0.8em;
+}
+
+.answers
+{
+    &.editor-field
+    {
+        input[type="text"]
+        {
+            margin: 0;
+        }
+
+        .answer-container
+        {
+            input[type="text"]
+            {
+                margin: 0;
+                display: inline-block;
+                width: 80%;
+            }
+        }
+    }
+}
+
+
+textarea
+{
+    -o-transition: height 0.2s;
+    -webkit-transition: height 0.2s;
+    -moz-transition: height 0.2s;
+    transition: height 0.2s;
+}
+
+.preview
+{
+    border: dashed 1px @borderColor;
+    padding: 0.5em;
+    min-height: 1em;
+    display: block;
+}
+
+
+.field-validation-error
+    {
+        color: @errorColor;
+        font-weight: bold;
+    }
+
+    .field-validation-valid
+    {
+        display: none;
+    }
+
+    input[type="text"].input-validation-error,
+    input[type="password"].input-validation-error
+    {
+        border: 1px solid @errorColor;
+    }
+
+    .validation-summary-errors
+    {
+        color: @errorColor;
+        font-weight: bold;
+        font-size: @emphasisFont;
+    }
+
+    .validation-summary-valid
+    {
+        display: none;
+    }

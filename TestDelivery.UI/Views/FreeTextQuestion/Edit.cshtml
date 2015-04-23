@@ -1,0 +1,25 @@
+﻿@model TestDelivery.DAL.Questions.FreeTextQuestion
+
+@Html.Partial("~/Views/Question/QuestionFields.cshtml")
+
+<div class="editor-label">
+    <label>Correct Answers</label>
+</div>
+<div class="answers editor-field">
+    @{var answerTemplateViewName = "~/Views/FreeTextQuestion/AnswerTemplate.cshtml";}
+    <div class="answer-container list">
+        @if (Model.CorrectAnswers != null)
+        {
+            foreach (var ca in Model.CorrectAnswers)
+            {
+                @Html.Partial(answerTemplateViewName, ca ?? string.Empty)
+            }
+        }
+    </div>
+    <button onclick="FreeTextQuestion.addAnswerTemplate()" type="button">Add Answer</button>
+    <div class="answer-template-container" style="display: none">
+        @Html.Partial(answerTemplateViewName, string.Empty)
+    </div>
+</div>
+
+@Html.EditableFieldFor(m => m.EvaluatorNotes, raw: true)

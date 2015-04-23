@@ -1,0 +1,231 @@
+﻿@smallFont: 0.95em;
+@mediumFont: 1.3em;
+@largeFont: 2em;
+@emphasisFont: 1.5em;
+
+
+body {
+    background: #EFEEEF;
+}
+
+.page
+{
+    width: 80%;
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: 'Segoe UI', helvetica, arial, sans-serif;
+
+    .header
+    {
+        line-height: 100%;
+        vertical-align: bottom;
+        margin-top: 1em;
+        position: relative;
+
+        .candidate-info
+        {
+            position: absolute;
+            right: 0;
+            top: 0;
+            color: gray;
+            font-size: smaller;
+        }
+    }
+
+    .footer
+    {
+        color: gray;
+        font-size: 0.7em;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        margin-left: 1em;
+    }
+
+  
+}
+
+.test
+{
+    clear: both;
+    margin-top: 2em;
+
+    .question-content
+    {
+        margin-top: 2em;
+
+        .answer-sections
+        {
+            margin-top: 2.5em;
+
+            .problem-answer
+            {
+                margin-bottom: 1.5em;
+
+                textarea
+                {
+                    display: block;
+                    width: 80%;
+                    font-family: Consolas, 'Lucida Console', 'DejaVu Sans Mono', monospace;
+                }
+
+                label
+                {
+                    display: block;
+                    font-weight: bold;
+                    margin-bottom: 0.3em;
+                }
+            }
+        }
+
+        .question-answer
+        {
+            input[type=text]
+            {
+                width: 80%;
+                font-size: @mediumFont;
+                padding: 5px;
+            }
+        }
+
+        .question-body
+        {
+            margin-bottom: 1em;
+
+            p.large,
+            p.summary
+            {
+                font-size: @largeFont;
+            }
+
+            p.medium
+            {
+                font-size: @mediumFont;
+            }
+
+            p.attention
+            {
+                font-weight: normal;
+                color: red;
+            }
+        }
+
+        .list.multiple-choice-answer-list
+        {
+            .item.multiple-choice-answer
+            {
+                font-size: @mediumFont;
+            }
+        }
+    }
+
+
+
+
+
+    .test-info
+    {
+        border-width: 0;
+        border-style: solid;
+        border-color: #ddd;
+        border-bottom-width: 1px;
+        border-top-width: 1px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+
+        .question-timer
+        {
+            float: right;
+        }
+
+        .test-progress
+        {
+            text-align: center;
+        }
+
+        .test-timer
+        {
+            float: left;
+        }
+    }
+
+    .more-tests
+    {
+        margin-top: 3em;
+    }
+}
+
+.content-box
+{
+    clear: both;
+    margin: 1em 0;
+    border: solid 1px #CCC;
+    background-color: white;
+    padding: 2em;
+    -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 0 6px rgba(0,0,0,0.3);
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+p.attention
+{
+    color: red;
+    font-weight: bold;
+}
+
+.title
+{
+    font-size: @emphasisFont;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+}
+
+.actions
+{
+    text-align: right;
+    margin-top: 3em;
+
+    button
+    {
+        width: 100%;
+        height: auto;
+        padding: 0.7em 2em;
+        font-weight: bold;
+        font-size: @mediumFont;
+        background-color: #eee;
+        border: solid 1px #CCC;
+        cursor: pointer;
+        color: black;
+
+        &:hover
+        {
+            background-color: #e2ff98;
+        }
+    }
+}
+
+
+ p.meta,
+    p.hint
+    {
+        border-left-style: solid;
+        border-left-width: 3px;
+        padding-left: 1em;
+        margin-left: 1em;
+    }
+
+    p.hint
+    {
+        font-size: @smallFont;
+        color: #585858;
+        font-style: italic;
+    }
+
+    p.meta
+    {
+        font-size: @smallFont;
+        font-style: italic;
+        color: #005ed1;
+    }

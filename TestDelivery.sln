@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestDelivery.DAL", "TestDelivery.DAL\TestDelivery.DAL.csproj", "{B202A1DA-6946-4FB6-8193-C46BBB0EDF33}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestDelivery.BL", "TestDelivery.BL\TestDelivery.BL.csproj", "{183DE63F-0D0E-4FB4-AEC5-2E919441A02C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestDelivery.UI", "TestDelivery.UI\TestDelivery.UI.csproj", "{0B12ED70-9DAB-449D-9E25-299CBFCC8A18}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestDelivery.ServiceLayer", "TestDelivery.ServiceLayer\TestDelivery.ServiceLayer.csproj", "{37930408-E70F-4680-AF98-92E8652D2808}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestDelivery.Common", "TestDelivery.Common\TestDelivery.Common.csproj", "{61AFADAD-78DC-4C2E-80AB-E49A54989F7B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B202A1DA-6946-4FB6-8193-C46BBB0EDF33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B202A1DA-6946-4FB6-8193-C46BBB0EDF33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B202A1DA-6946-4FB6-8193-C46BBB0EDF33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B202A1DA-6946-4FB6-8193-C46BBB0EDF33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{183DE63F-0D0E-4FB4-AEC5-2E919441A02C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{183DE63F-0D0E-4FB4-AEC5-2E919441A02C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{183DE63F-0D0E-4FB4-AEC5-2E919441A02C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{183DE63F-0D0E-4FB4-AEC5-2E919441A02C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B12ED70-9DAB-449D-9E25-299CBFCC8A18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B12ED70-9DAB-449D-9E25-299CBFCC8A18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B12ED70-9DAB-449D-9E25-299CBFCC8A18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B12ED70-9DAB-449D-9E25-299CBFCC8A18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37930408-E70F-4680-AF98-92E8652D2808}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37930408-E70F-4680-AF98-92E8652D2808}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37930408-E70F-4680-AF98-92E8652D2808}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37930408-E70F-4680-AF98-92E8652D2808}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61AFADAD-78DC-4C2E-80AB-E49A54989F7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61AFADAD-78DC-4C2E-80AB-E49A54989F7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61AFADAD-78DC-4C2E-80AB-E49A54989F7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61AFADAD-78DC-4C2E-80AB-E49A54989F7B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(SubversionScc) = preSolution
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+		Svn-Managed = True
+	EndGlobalSection
+EndGlobal

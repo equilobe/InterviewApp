@@ -1,0 +1,27 @@
+﻿@model TestDelivery.DAL.Questions.Question
+
+<div class="item question bottom-separator">
+    <a target="_self" href="@Url.Action("Edit", "Questions", new { id = Model.Id })">@Model.Summary</a>
+    
+    <span class="details">
+        <span class="type">
+            @Model.GetType().Name
+        </span>
+        - Limit:
+        <span class="time-limit">
+            @TimeSpan.FromSeconds(Model.TimeLimit).ToString()
+        </span>
+        - Score:
+        <span class="score">
+            @Model.Score
+        </span>
+    </span>
+
+    <span class="tags details">
+        @Model.Tags
+    </span>
+
+    <span class="options">
+        <button onclick="deleteQuestion('@Model.Id');">Delete</button>
+    </span>
+</div>

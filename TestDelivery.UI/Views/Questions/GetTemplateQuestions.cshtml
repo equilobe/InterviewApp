@@ -1,0 +1,20 @@
+﻿@model TestDelivery.ServiceLayer.Lists.Page<TestDelivery.DAL.Questions.Question>
+@{
+    Layout = null;
+}
+<h3>Available Questions</h3>
+
+@Html.Partial("~/Views/Paging/Pager.cshtml")
+
+<div class="questions list">
+    @foreach (var question in Model.Items)
+    {
+        @Html.Partial("~/Views/Template/Question.cshtml", question)
+    }
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        initQuestions();
+    });
+</script>

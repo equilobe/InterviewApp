@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - Test Delivery</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+
+    @Styles.Render("~/Content/themes/base/css", "~/Content/css/admin-css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jQuery")
+    @Scripts.Render("~/bundles/jQueryUI")
+    @Scripts.Render("~/bundles/TestCreation")
+
+    <script type="text/javascript">
+        $(function () {
+            //$("textarea").autosize({ append: "\n" });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <div class="content-wrapper">
+            <nav>
+                <ul id="menu">
+                    <li>@Html.ActionLink("Respondents", "Index", "Respondent")</li>
+                    <li>@Html.ActionLink("Templates", "Index", "Template")</li>
+                    @*<li>@Html.ActionLink("Questions", "Index", "Questions")</li>*@
+                    @*<li>@html.actionlink("evaluate", "index", "evaluatetest")</li>*@
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div id="body">
+        @RenderSection("featured", required: false)
+        <section class="content-wrapper main-content clear-fix">
+            @RenderBody()
+        </section>
+    </div>
+    <footer>
+        <div class="content-wrapper">
+            <p>&copy; @DateTime.Now.Year - Equilobe Software</p>
+        </div>
+    </footer>
+
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

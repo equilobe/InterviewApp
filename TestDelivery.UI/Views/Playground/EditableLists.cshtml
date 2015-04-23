@@ -1,0 +1,35 @@
+﻿@model TestDelivery.UI.ViewModels.Playground
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>EditableLists</title>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/scripts/jQueryDisableSelection.js")
+    @Scripts.Render("~/scripts/Lists/EditableList.js")
+
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm())
+        {            
+            @Html.LabelFor(m => m.Items)
+            @Html.EditableListFor(m => m.Items, "Item")    
+                
+            @Html.LabelFor(m => m.Names)
+            @Html.EditableListFor(m => m.Names, "String")
+                            
+            <input type="submit" value="Submit" />
+        }
+    </div>
+
+</body>
+</html>

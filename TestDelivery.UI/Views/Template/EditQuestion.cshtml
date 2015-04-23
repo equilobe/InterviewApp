@@ -1,0 +1,15 @@
+﻿@model TestDelivery.UI.ViewModels.Templates.EditQuestionViewModel
+@{
+    Layout = null;
+    var questionType = Model.Question.GetType().Name;
+    ViewData.TemplateInfo.HtmlFieldPrefix = "editQuestion";    
+}
+
+<div class="edit-question-form" data-url="@Url.Action("SaveTemplateQuestion", Model.Question.GetType().Name, new { templateId = Model.Template.Id })">
+    @Html.Partial(Model.ViewPath, Model.Question)
+
+    <p>
+        @{var submitAction = "saveTemplateQuestion(this, " + questionType + ".onSave);"; }
+        <input type="button" class="submit" value="Save Question" onclick="@submitAction" />
+    </p>
+</div>

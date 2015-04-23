@@ -1,0 +1,24 @@
+﻿@model TestDelivery.UI.ViewModels.FinishTest
+@{
+    Layout = null;
+}
+
+@Html.Raw(Model.CurrentTest.TestTemplate.EndInstructions)
+
+@if (Model.NextTest != null)
+{
+    <div class="more-tests">
+        <p>
+            <b>Mai sunt disponibile si alte teste!</b>
+        </p>
+
+        <p>
+            Daca doresti sa treci la urmatorul test, apasa pe butonul de mai jos. Testul nu
+            va incepe imediat, deci poti lua o pauza dupa ce vei ajunge pe pagina de introducere.
+        </p>
+        <div class="actions">
+            <button onclick="window.location = '@Url.Action("take", "test", new { code = Model.NextTest.SecretCode })'">
+                Urmatorul test</button>
+        </div>
+    </div>
+}

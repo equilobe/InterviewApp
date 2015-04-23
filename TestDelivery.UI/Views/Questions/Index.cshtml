@@ -1,0 +1,48 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model TestDelivery.UI.ViewModels.Questions.IndexViewModel
+@{
+    ViewBag.Title = "Questions";
+}
+
+<style type="text/css">
+    .add-commands {
+        margin: 15px 0;
+    }
+</style>
+
+<h2>Questions</h2>
+
+<div class="add-commands">
+    @foreach (var controllerName in Model.NewQuestionControllerNames)
+    {
+        <button onclick="document.location='@Url.Action("New", controllerName)';">Add @controllerName</button>
+    }
+</div>
+
+<div class="question-container paging-container" data-url="@Url.Action("GetQuestions")">
+</div>
+
+@section scripts
+{
+    <script type="text/javascript">
+        $(function () {
+            loadPage($(".question-container"), 1);
+        });
+
+        function deleteQuestion(id) {
+
+            var conf = confirm("Are you sure you want to delete this question?");
+            if (conf == true) {
+                var guid = id;
+                link = '@Url.Action("DeleteQuestion", new { id = 999999 })';
+                link = link.replace("999999", guid);
+                document.location = link;
+            }
+            else document.location = '@Url.Action("Index")';
+
+        }
+    </script>
+
+}

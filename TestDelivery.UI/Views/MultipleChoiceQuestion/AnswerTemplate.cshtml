@@ -1,0 +1,20 @@
+﻿@model TestDelivery.DAL.Questions.PossibleAnswer
+@{    
+    var oldPrefix = ViewData.TemplateInfo.HtmlFieldPrefix;
+    ViewData.TemplateInfo.HtmlFieldPrefix = (string.IsNullOrEmpty(oldPrefix) ? string.Empty : (oldPrefix + ".")) + "answertemplate";   
+}
+
+<div class="list">
+    <div class="answer item">
+        @Html.HiddenFor(m => m.Id)
+        @Html.TextBoxFor(m => m.Text)
+        @Html.CheckBoxFor(m => m.IsCorrect)
+        <span class="options">
+            <button onclick="MultipleChoiceQuestion.deleteAnswer(this)">Delete</button>
+        </span>
+    </div>
+</div>
+
+@{
+    ViewData.TemplateInfo.HtmlFieldPrefix = oldPrefix;
+}

@@ -1,0 +1,52 @@
+﻿@model List<TestDelivery.DAL.TestTemplate>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Test templates</h2>
+
+@Html.Partial("New", new TestDelivery.DAL.TestTemplate())
+
+<div id="count" class="list" data-count="@Model.Count">
+
+    @{
+        foreach (var template in Model)
+        {
+
+            var activeClass = template.IsActive ? string.Empty : " inactive";
+            
+        <div class="item bottom-separator @activeClass">
+
+            <a target="_self" href="@Url.Action("Edit", "Template", new { id = template.Id })">
+                @template.Name
+            </a>
+
+            <div class="details">
+                <div class="property">
+                    <label>Priority </label>
+                    <span>@template.Priority</span>
+                </div>
+                <div class="property">
+                    <label>Questions </label>
+                    <span>@template.Questions.Count</span>
+                </div>
+                <div class="property">
+                    <label>Max Duration </label>
+                    <span>@template.MaxDuration.ToDurationString()</span>
+                </div>
+            </div>
+
+            <span class="options">
+                <a href="#" onclick="deleteItem('@Url.Action("Delete", "Template", new { id = template.Id })'); return false;">
+                    Delete</a>
+            </span>
+        </div>
+        }
+    }
+</div>
+
+@section scripts
+{
+    @Scripts.Render("~/Scripts/Templates.js")
+}

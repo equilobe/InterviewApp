@@ -1,0 +1,17 @@
+﻿@model TestDelivery.DAL.TestTemplate
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.StartInstructions)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.StartInstructions)
+    @Html.ValidationMessageFor(model => model.StartInstructions)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.EndInstructions)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.EndInstructions)
+    @Html.ValidationMessageFor(model => model.EndInstructions)
+</div>

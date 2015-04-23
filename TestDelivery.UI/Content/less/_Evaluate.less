@@ -1,0 +1,159 @@
+﻿@import "_Variables";
+
+.evaluate-test .list .item.answer
+{
+    border-bottom: solid 1px @borderColor;
+    padding-bottom: 1em;
+    margin-bottom: 0;
+    padding-top: 0.5em;
+}
+
+.evaluate-test .answer.unevaluated .question-summary
+{
+    font-weight: bold;
+}
+
+.evaluate-test .answer .evaluate-answer
+{
+    margin-top: 0.5em;
+}
+
+.evaluate-test .list .item.answer .evaluate-answer input[type=number]
+{
+    width: 50px;
+}
+
+
+.evaluate-test .question-details {
+    span {
+        font-size: @fontNormal;
+        color: @ScoreFontColor;
+        background: @ScoreBackgroundColor;
+        padding: 2px 10px;
+        margin-left: 5px;
+        display: inline-block;
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        border-radius: 10px;
+
+        &.unevaluated{    
+            background: @UnevaluatedScoreBackgroundColor;
+        }
+    }
+    
+}
+
+.evaluate-test .test-details
+{
+    margin-bottom: 1em;
+    margin-top: 0.3em;
+}
+
+    .evaluate-test .test-details .test-property
+    {
+        display: inline-block;
+        margin-right: 2em;
+        margin-bottom: 1em;
+        min-width: 5em;
+    }
+
+        .evaluate-test .test-details .test-property label
+        {
+            display: block;
+            font-size: smaller;
+            color: @ScoreFontColor;
+        }
+
+.evaluate-test .partial-score
+{
+    color: @ScoreFontColor;
+}
+
+
+.evaluate-test .answer
+{
+
+    .correct-answers
+    {
+        span
+        {
+            background: #C2FFBD;
+            display: inline-block;
+            padding: 0.2em 0.7em;
+            margin-right: 0.5em;
+            border-radius: 2em;
+            margin-bottom: 0.5em;
+        }
+                 
+    }
+
+    .wrong-answers
+    {
+        span
+        {
+            background: #f6a2a2;
+            display: inline-block;
+            padding: 0.2em 0.7em;
+            margin-right: 0.5em;
+            border-radius: 2em;
+            margin-bottom: 0.5em;
+        }
+    }
+                    
+
+    .answer-text
+    {
+        border: solid 1px #ccc;
+        padding: 0.3em 0.7em;
+        display: block;
+        margin-top: 0.5em;
+        min-height: 1.5em;
+        background: #fff5c0;
+    }
+
+    .answer-section
+    {
+        pre
+        {
+            border: solid 1px #ddd;
+			min-height: 2em;
+			font-family: Consolas, 'Lucida Console', 'DejaVu Sans Mono', monospace;
+			font-weight: normal;
+			overflow: auto;
+			padding: 0.5em;
+            background-color: #fff5c0;
+        }
+    }
+}
+
+.float-right{
+    float: right;
+}
+
+.clear{
+    clear: both;
+}
+
+.evaluate-test {
+
+    .ui-accordion {
+        .ui-state-default {
+            background: white;
+            border-color: transparent;
+        }
+
+        .ui-state-active {
+            border-color: #aaa;
+            border-bottom: 0;
+        }
+
+        .ui-accordion-content {
+            /*padding: 1em 0.5em 1em 2em;
+            margin-left: 1.2em;
+            border-bottom: 0;
+            border-right: 0;
+            border-top: 0;
+            border-radius: 0;*/
+        }
+    }
+}

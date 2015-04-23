@@ -1,0 +1,23 @@
+﻿@model TestDelivery.UI.ViewModels.EditViewModel
+
+@{
+    ViewBag.Title = Model.IsNew ? "New" : "Edit";
+    var questionType = Model.Question.GetType().Name;
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+@using (Html.BeginForm("Save", questionType))
+{    
+    @Html.Partial(Model.ViewPath, Model.Question)
+    
+    <p>
+        @{ var onSave = questionType + ".onSave()"; }
+        <input type="submit" value="Save" onclick="@onSave" />
+    </p>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index", "Questions")
+</div>

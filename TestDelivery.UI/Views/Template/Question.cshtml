@@ -1,0 +1,33 @@
+﻿@model TestDelivery.DAL.Questions.Question
+@{
+    Layout = null;
+}
+
+<div class="question item" data-question-id="@Model.Id">
+    <span class="options">
+        <a href="#" class="delete" onclick="deleteQuestion(this); return false;">Delete</a>
+    </span>
+
+    <span><a href="#" onclick="editQuestionInPlace(this); return false;">@Model.Summary</a></span>
+
+    <div class="details">
+        <div class="property">
+            <span>@Model.Score p</span>
+        </div>
+        <div class="property">
+            <span>
+                @if (Model.TimeLimit > 0)
+                {
+                    @:@Model.Duration.ToDurationString(true)      
+                }
+                else
+                {
+                    @:No time limit
+                }
+            </span>
+        </div>
+        <div class="property">
+            <span>@Model.GetType().Name</span>
+        </div>
+    </div>
+</div>
