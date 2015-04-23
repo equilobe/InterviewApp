@@ -220,6 +220,7 @@
     <Content Include="Content\less\_Site.less" />
     <None Include="Properties\PublishProfiles\interview.equilobe.com.pubxml" />
     <None Include="Scripts\jquery-1.6.2-vsdoc.js" />
+    <Content Include="Images\appLogo.png" />
     <Content Include="Images\logo.png" />
     <Content Include="Scripts\CreateTemplate.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />

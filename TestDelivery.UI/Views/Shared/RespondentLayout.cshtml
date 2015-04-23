@@ -11,7 +11,7 @@
     <div class="page">
         <div class="header">
             <div class="logo">
-                <img src="~/Images/logo.png" alt="Equilobe" />
+                <img src="~/Images/appLogo.png" alt="Equilobe" />
             </div>
             <div class="candidate-info">
                 @ViewBag.Name (@ViewBag.Email)
@@ -19,7 +19,7 @@
         </div>
         @RenderBody()
         <div class="footer">
-            &copy; Equilobe Software 2007-2012
+            &copy; Equilobe Software 2007-@DateTime.Now.Year
         </div>
     </div>
 
