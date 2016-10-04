@@ -26,3 +26,13 @@ function evaluateAnswer(url, elem) {
         loadTestEvaluation();
     });
 }
+
+function convertMarkdown(textareaSelector, destinationSelector) {
+    var markdown = $(textareaSelector).val().trim();
+    var converter = new Markdown.Converter();
+    $(textareaSelector)
+        .parent()
+        .find(destinationSelector)
+        .html(converter.makeHtml(markdown));
+}
+

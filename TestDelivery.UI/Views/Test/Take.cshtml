@@ -8,7 +8,7 @@
 
 <div class="test content-box">
     <div class="title">
-        @Model.TestTemplate.Name
+        @Model.TestTemplate.Name        
     </div>
     <div class="container">
     </div>
@@ -16,8 +16,6 @@
 
 
 @section scripts{
-    @Scripts.Render("~/bundles/TestDelivery")
-
     <script type="text/javascript">
         var nextUrl = '@Url.Action("next", new { code = Model.SecretCode })';
         var startUrl = '@Url.Action("welcome", new { code = Model.SecretCode })';

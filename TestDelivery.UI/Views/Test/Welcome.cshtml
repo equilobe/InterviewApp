@@ -2,14 +2,19 @@
 @{
     Layout = null;
 }
-
-@Html.Raw(Model.TestTemplate.StartInstructions)
+<div class="intro-body">    
+</div>
+<textarea class="intro-body-textarea" style="display:none;">@Html.Raw(Model.TestTemplate.StartInstructions)</textarea>
 
 @if (Model.TestTemplate.MaxDuration != TimeSpan.MaxValue)
 {
-    <p class="hint">Durata test: @Model.TestTemplate.MaxDuration.ToDurationString()</p>
+    <p class="hint">Durata test: maxim @Model.TestTemplate.MaxDuration.ToDurationString()</p>
 }
 
 <div class="actions">
-    <button class="start-button" onclick="Test.goNext();">Porneste test</button>
+    <button class="start-button" onclick="Test.goNext();">Incepe testul</button>
 </div>
+
+<script type="text/javascript">
+    convertMarkdown(".intro-body", ".intro-body-textarea");
+</script>

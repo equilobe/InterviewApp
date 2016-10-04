@@ -3,13 +3,21 @@
     Layout = null;
 }
 
-<div class="question-body">
-    @if (string.IsNullOrWhiteSpace(Model.Content))
-    { 
+
+@if (string.IsNullOrWhiteSpace(Model.Content))
+{
+    <div class="question-body">
         <p class="summary">@Model.Summary</p>
-    }
-    else
-    {
-        @Html.Raw(Model.Content)
-    }
-</div>
+    </div>
+}
+else
+{
+    <div class="question-body">
+    </div>
+    <textarea class="question-body-textarea" style="display:none">@Html.Raw(Model.Content)</textarea>
+
+    <script type="text/javascript">
+        convertMarkdown(".question-body-textarea", ".question-body");
+    </script>
+}
+

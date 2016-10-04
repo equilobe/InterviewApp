@@ -11,15 +11,31 @@ function initCreateTemplatePage(canEdit) {
     $(".selected-questions").disableSelection();
     $("input[type=submit]").click(function (event) { onSubmitClick(this, event); });
 
-    tinymce.init({
-        selector: 'textarea',
-        menubar: false,
-        plugins: "link",
-        toolbar: "undo redo | bold italic removeformat | styleselect fontselect fontsizeselect | bullist numlist outdent indent | link"
+
+    $(".editor-field .js-markdown-preview").each(function (index, element) {
+        showPreview(element);
     });
 
-    // loadPage($(".available-questions-section"), 1);
+    $(".editor-field textarea").autosize({ append: "\n" });
+
+    $("form.js-template-form").submit(function saveTemplate(event) {
+        var form = $(event.target);
+        var url = form.attr("action");
+        $.post(url, form.serialize());
+        return false;
+    });
 }
+
+var converter = new Markdown.Converter();
+
+function showPreview(element) {
+    var textarea = $(element).parent().find("textarea");    
+    $(element).html(converter.makeHtml(textarea.val()));
+    textarea.on('input', function (event) {
+        $(event.target).parent().find(".js-markdown-preview").html(converter.makeHtml(event.target.value));
+    });
+}
+
 
 function initQuestions() {
     $(QUESTION_SELECTOR).click(function (event) { onQuestionClick(this, event); })
@@ -126,6 +142,12 @@ function editQuestionInPlace(elem) {
 function editQuestionInPlaceUrl(url) {
     $.get(url, function (response) {
         $(".edit-question-container").html(response);
+
+        $(".edit-question-container textarea").autosize({ append: "\n" });
+
+        $(".edit-question-container .editor-field .js-markdown-preview").each(function (index, element) {
+            showPreview(element);
+        });
     });
 }
 
@@ -153,7 +175,6 @@ function reloadQuestionListItem(questionId) {
 }
 
 function saveTemplateQuestion(elem, onSave) {
-    tinyMCE.triggerSave();
     var form = $(elem).closest(".edit-question-form");
     var url = form.attr("data-url");
     var questionId = form.find("input[name='editQuestion.Id']").val();

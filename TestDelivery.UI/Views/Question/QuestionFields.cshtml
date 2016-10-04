@@ -16,13 +16,6 @@
             $("input[name='" + "@Html.NameFor(m => m.Score)" + "']").attr("disabled", "");
         }
 
-        tinymce.init({
-            selector: ".edit-question-form .html-field textarea",
-            menubar: false,
-            plugins: "link",
-            toolbar: "undo redo | bold italic removeformat | styleselect fontselect fontsizeselect | bullist numlist outdent indent | link"
-        });
-
     });
 
 </script>

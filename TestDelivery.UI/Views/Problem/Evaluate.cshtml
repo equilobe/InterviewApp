@@ -6,10 +6,12 @@
 }
 
 @if (!string.IsNullOrEmpty(q.Content))
-{
-    <div class="question-text">
-        @Html.Raw(q.Content)
-    </div>
+{    
+    <div class="question-text"></div>
+    <textarea class="question-text-textarea" style="display:none;">@Html.Raw(q.Content)</textarea>
+    <script type="text/javascript">
+        convertMarkdown(".question-text-textarea", ".question-text");
+    </script>
 }
 
 @if (!string.IsNullOrEmpty(q.EvaluatorNotes))
@@ -18,7 +20,11 @@
         <div class="label">
             <label>Evaluator notes</label>
         </div>
-        @Html.Raw(q.EvaluatorNotes)
+        <div class="evaluator-notes-text"></div>
+        <textarea class="evaluator-notes-textarea" style="display:none;">@Html.Raw(q.EvaluatorNotes)</textarea>        
+        <script type="text/javascript">
+            convertMarkdown(".evaluator-notes-textarea", ".evaluator-notes-text");
+        </script>
     </div>
 }
 

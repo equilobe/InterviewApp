@@ -21,3 +21,9 @@ Test.init = function(){
         $(".container").html(responseText);
     });
 };
+
+function convertMarkdown(textareaSelector, destinationSelector) {
+    var markdown = $(textareaSelector).val().trim();
+    var converter = new Markdown.Converter();
+    $(destinationSelector).html(converter.makeHtml(markdown));
+}

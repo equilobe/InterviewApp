@@ -14,17 +14,15 @@
     </p>
 
     <p>
-        Interviul este format din mai multe teste, unele cu intrebari si altele cu probleme.
-        Testele sunt contra cronometru.
+        Interviul este format din intrebari si probleme, fiecare fiind contra cronometru.
     </p>
 
     <p>
-        Cand esti gata sa mergi la primul test, apasa pe butonul de mai jos. 
+        Cand esti gata sa mergi la test, apasa pe butonul de mai jos. 
     </p>
 
     <p class="attention">
-        Asigura-te ca folosesti un browser modern (IE 9, Chrome, Firefox) si ca ai JavaScript
-        activat.
+        Asigura-te ca folosesti un browser modern si ca ai JavaScript activat.
     </p>
 
     <p>
@@ -34,7 +32,7 @@
 
     @if(Model.TotalDuration.TotalSeconds>0){
     <p class="hint">
-        Durata interviu: @Model.TotalDuration.ToDurationString()
+        Durata interviu: maxim @Model.TotalDuration.ToDurationString()
     </p>
     }
     else{
@@ -48,7 +46,7 @@
     {
         <div class="actions">
             <button onclick="window.location = '@Url.Action("take", "test", new { code = @Model.NextTest.SecretCode })'">
-                Primul test</button>
+                Mergi la test</button>
         </div>
     }
 </div>

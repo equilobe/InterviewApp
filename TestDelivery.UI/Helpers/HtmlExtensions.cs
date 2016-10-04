@@ -77,7 +77,7 @@ namespace System.Web.Mvc
                 }
                 sb.Append("</div>");
 
-                sb.Append(html.EditableFieldPartFor(selector, raw));
+                sb.Append(html.EditableFieldPartFor(selector, raw));                
             }
             sb.Append("</div>");
 
@@ -128,6 +128,9 @@ namespace System.Web.Mvc
 
                 sb.Append(html.EditorFor(selector));
                 sb.Append(html.ValidationMessageFor(selector));
+
+                if (raw)
+                    sb.Append("<div class='js-markdown-preview'></div>");
             }
             sb.Append("</div>");
             return new MvcHtmlString(sb.ToString());

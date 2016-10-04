@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -221,6 +222,7 @@
     <None Include="Properties\PublishProfiles\interview.equilobe.com.pubxml" />
     <None Include="Scripts\jquery-1.6.2-vsdoc.js" />
     <Content Include="Images\appLogo.png" />
+    <Content Include="Images\equilobe-logo.png" />
     <Content Include="Images\logo.png" />
     <Content Include="Scripts\CreateTemplate.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -247,6 +249,7 @@
     <Content Include="Scripts\jQueryDisableSelection.js" />
     <Content Include="Scripts\knockout-2.0.0.debug.js" />
     <Content Include="Scripts\knockout-2.0.0.js" />
+    <Content Include="Scripts\Markdown.Converter.js" />
     <Content Include="Scripts\modernizr-2.0.6-development-only.js" />
     <Content Include="Scripts\Lists\Paging.js" />
     <Content Include="Scripts\Questions.js" />

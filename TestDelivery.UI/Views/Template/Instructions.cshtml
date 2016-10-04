@@ -6,6 +6,7 @@
 <div class="editor-field">
     @Html.EditorFor(model => model.StartInstructions)
     @Html.ValidationMessageFor(model => model.StartInstructions)
+    <div class="js-markdown-preview"></div>
 </div>
 
 <div class="editor-label">
@@ -14,4 +15,5 @@
 <div class="editor-field">
     @Html.EditorFor(model => model.EndInstructions)
     @Html.ValidationMessageFor(model => model.EndInstructions)
+    <div class="js-markdown-preview"></div>
 </div>

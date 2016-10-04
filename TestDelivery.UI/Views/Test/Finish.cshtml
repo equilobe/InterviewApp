@@ -3,7 +3,13 @@
     Layout = null;
 }
 
-@Html.Raw(Model.CurrentTest.TestTemplate.EndInstructions)
+<div class="intro-body">
+</div>
+<textarea class="intro-body-textarea" style="display:none">@Html.Raw(Model.CurrentTest.TestTemplate.EndInstructions)</textarea>
+
+<script type="text/javascript">
+    convertMarkdown(".intro-body-textarea", ".intro-body");
+</script>
 
 @if (Model.NextTest != null)
 {

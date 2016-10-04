@@ -16,31 +16,33 @@ namespace TestDelivery.UI
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.unobtrusive*",
                         "~/Scripts/jquery.validate*"));
-
-            bundles.Add(new ScriptBundle("~/bundles/less").Include(
-                        "~/Scripts/less-*"));
-
-            bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                        "~/Scripts/modernizr-*"));
-            
+           
             bundles.Add(new ScriptBundle("~/bundles/TestCreation").Include(
-                        "~/scripts/jQueryDisableSelection.js",
-                        "~/scripts/Questions.js")
-                        .IncludeDirectory("~/Scripts/Lists", "*.js", false));
+                "~/Scripts/jquery-1.*",
+                "~/Scripts/jquery-ui*",
+                "~/scripts/jQueryDisableSelection.js",
+                "~/scripts/Questions.js",
+                "~/scripts/jquery.autosize-min.js",
+                "~/scripts/Markdown.Converter.js")
+               .IncludeDirectory("~/Scripts/Lists", "*.js", false));
 
 
-            bundles.Add(new ScriptBundle("~/bundles/TestDelivery")
-                            .Include("~/Scripts/TestTaking.js",
-                                     "~/Scripts/QuestionTimer.js",
-                                     "~/scripts/jquery.autosize-min.js"));
+            bundles.Add(new ScriptBundle("~/bundles/TestDelivery").Include(
+                "~/Scripts/jquery-1.*",
+                "~/Scripts/jquery-ui*",
+                "~/Scripts/TestTaking.js",
+                "~/Scripts/QuestionTimer.js",
+                "~/scripts/jquery.autosize-min.js",
+                "~/scripts/Markdown.Converter.js"));
 
             bundles.Add(new StyleBundle("~/Content/css/admin-css")
-                                .Include("~/Content/css/Admin.css"));
+                .Include("~/Content/css/Admin.css"));
 
             bundles.Add(new StyleBundle("~/Content/css/respondent-css")
-                                .Include("~/Content/css/Respondent.css"));
+                .Include("~/Content/css/Respondent.css"));
 
-            bundles.Add(new StyleBundle("~/Content/themes/base/css").Include("~/Content/themes/base/jquery-ui-*"));
+            bundles.Add(new StyleBundle("~/Content/themes/base/css")
+                .Include("~/Content/themes/base/jquery-ui-*"));
         }
     }
 }
